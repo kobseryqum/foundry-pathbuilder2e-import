@@ -7,7 +7,7 @@
     ],
   "version": "0.10.0",
   "minimumCoreVersion": "10",
-  "compatibleCoreVersion": "9.255",
+  "compatibleCoreVersion": "10",
   "esmodules": [
         "pathbuilder-import-min.js"
     ],
