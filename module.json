@@ -6,8 +6,11 @@
     {"name" : "slate"}, {"name" : "kobseryqum"}
     ],
   "version": "0.10.0",
-  "minimumCoreVersion": "10",
-  "compatibleCoreVersion": "10",
+  "compatibility": {
+    "minimum": "10.286",
+    "verified": "10.286",
+    "maximum": "10"
+  },
   "esmodules": [
         "pathbuilder-import-min.js"
     ],
