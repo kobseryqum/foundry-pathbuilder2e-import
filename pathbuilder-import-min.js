@@ -350,7 +350,10 @@ async function importCharacter(targetActor, jsonBuild) {
   if (jsonBuild.class == "Oracle"){
     arraySpecials.push("Mystery")
     } 
-
+  // fix for Swashbuckler
+  if (jsonBuild.class == "Swashbuckler"){
+    arraySpecials.push("Swashbuckler's Style")
+    } 
 
   for (var ref in arraySpecials) {
     if (fbpiDebug)
