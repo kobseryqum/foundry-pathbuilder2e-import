@@ -335,6 +335,23 @@ async function importCharacter(targetActor, jsonBuild) {
       pbcolor1,
       pbcolor4
     );
+  
+    // fix for Thaumaturge implements
+  if (jsonBuild.class == "Thaumaturge") {
+    arraySpecials.push("First Implement and Esoterica")
+    }
+  if ((jsonBuild.class == "Thaumaturge") && (jsonBuild.level >= "5")){
+    arraySpecials.push("Second Implement")
+    }
+  if ((jsonBuild.class == "Thaumaturge") && (jsonBuild.level >= "15")){
+    arraySpecials.push("Third Implement")
+    } 
+  // fix for Oracle
+  if (jsonBuild.class == "Oracle"){
+    arraySpecials.push("Mystery")
+    } 
+
+
   for (var ref in arraySpecials) {
     if (fbpiDebug)
       console.log(
@@ -342,14 +359,15 @@ async function importCharacter(targetActor, jsonBuild) {
         pbcolor1,
         pbcolor4
       );
+
     if (typeof arraySpecials[ref][0] !== 'undefined')
       arraySpecials[ref] = mapSpecialToFoundryName(arraySpecials[ref]);
   }
   for (var ref in arraySpecials) {
     if (typeof arraySpecials[ref][0] !== 'undefined'){
-     if(arraySpecials[ref] == jsonBuild.heritage){
+    if((arraySpecials[ref] == "Mirror Initiate Benefit") || (arraySpecials[ref] == "Weapon Initiate Benefit") || (arraySpecials[ref] == "Implement's Interruption") || (arraySpecials[ref] == jsonBuild.heritage)){
       arraySpecials.splice(ref, 1)
-     }
+      }
     }
   }
   if (fbpiDebug)
@@ -380,6 +398,12 @@ async function importCharacter(targetActor, jsonBuild) {
      if(arrayFeats[ref][0] == jsonBuild.heritage){
        arrayFeats.splice(ref, 1)
      }
+    // fix for Thaumaturge Estoric lore
+     if(jsonBuild.class == "Thaumaturge"){
+      if (arrayFeats[ref][0] == 'Dubious Knowledge'){
+        arrayFeats.splice(ref, 1)
+      }
+    }
     }
   }
   if (fbpiDebug)
@@ -513,28 +537,14 @@ async function importCharacter(targetActor, jsonBuild) {
         pbcolor1,
         pbcolor4
       );
-    let packClasses = await game.packs.get("pf2e.classes").getDocuments({name: jsonBuild.class});
+    let packClasses = await game.packs.get("pf2e.classes").getDocuments();
 
     for (const item of packClasses) {
       if (item.slug == getSlug(jsonBuild.class) || item.slug == getSlugNoQuote(jsonBuild.class)) {
         //allItems.push(item.toObject());
         await targetActor.createEmbeddedDocuments("Item", [item.toObject()]);
         // console.log(item.system.items);
-        // for (const classFeatureItem in item.system.items) {
-        //   // console.log("Class feature:");
-        //   // console.log(classFeatureItem);
-        //   // console.log(
-        //   //   `jsonBuild.level ${jsonBuild.level} >= classFeatureItem.level ${item.system.items[classFeatureItem].level}? `
-        //   // );
-        //   if (jsonBuild.level >= item.system.items[classFeatureItem].level) {
-        //     let newFeature = {
-        //       id: item.system.items[classFeatureItem].id,
-        //       pack: item.system.items[classFeatureItem].pack,
-        //       name: item.system.items[classFeatureItem].name,
-        //     };
-        //     classFeatures.push(newFeature);
-        //   }
-        // }
+
       }
     }
   }
@@ -608,20 +618,25 @@ if (targetActor.heritage != jsonBuild.heritage) {
     "Polearm",
     "Longsword",
     "Moon",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
+    "Weapon",
+    "Wellspring Gnome",
+    "Amulet",
+    "Bell",
+    "Chalice",
+    "Mirror",
+    "Regalia",
+    "Tome",
+    "Wand",
+    "Ancestors Mystery",
+    "Mirror's Reflection",
+    "Battle Mystery",
+    "Bones Mystery",
+    "Cosmos Mystery",
+    "Flames Mystery",
+    "Life Mystery",
+    "Lore Mystery",
+    "Tempest Mystery",
+    "Time Mystery",
     "Hammer",
     "Athletics",
     "Deception",
@@ -640,7 +655,8 @@ if (targetActor.heritage != jsonBuild.heritage) {
     "Evasion",
     "Vigilant Senses",
     "Iron Will",
-    "Lightning Reflexes",
+    "Death",
+    "Family",
     "Alertness",
     "Shield Block",
     "Anathema",
@@ -681,6 +697,7 @@ if (targetActor.heritage != jsonBuild.heritage) {
     "Weapon Mastery",
     "Incredible Senses",
   ];
+  
   for (const cf in classFeatures) {
     blacklist.push(classFeatures[cf].name);
   }
@@ -690,10 +707,6 @@ if (targetActor.heritage != jsonBuild.heritage) {
   if (addFeats) {
     finishedAncestryFeatures = true;
     finishedClassFeatures = true;
-    // console.log("%cPathbuilder2e Import | %cdoing feat items",pbcolor1,pbcolor4)
-    await addFeatItems(targetActor, arrayFeats);
-    // console.log("%cPathbuilder2e Import | %cdoing feat items on specials",pbcolor1,pbcolor4)
-    await addFeatItems(targetActor, arraySpecials);
     // console.log("%cPathbuilder2e Import | %cdoing AncestryFeaturefeat items on feats",pbcolor1,pbcolor4)
     // addAncestryFeatureFeatItems(targetActor, arrayFeats);
     // console.log("%cPathbuilder2e Import | %cdoing AncestryFeaturefeat items on specials",pbcolor1,pbcolor4)
@@ -707,6 +720,10 @@ if (targetActor.heritage != jsonBuild.heritage) {
       specialClassFeatures,
       classFeatures
     );
+    // console.log("%cPathbuilder2e Import | %cdoing feat items",pbcolor1,pbcolor4)
+    await addFeatItems(targetActor, arrayFeats);
+    // console.log("%cPathbuilder2e Import | %cdoing feat items on specials",pbcolor1,pbcolor4)
+    await addFeatItems(targetActor, arraySpecials);
   } else {
     finishedFeats = true;
     finishedAncestryFeatures = true;
@@ -801,11 +818,11 @@ if (targetActor.heritage != jsonBuild.heritage) {
     )) {
       for (var ref in arrayEquipment) {
         if (fbpiDebug)
-          console.log(
-            "%cPathbuilder2e Import | %c arrayEquipment[ref]: " + arrayEquipment[ref],
-            pbcolor1,
-            pbcolor4
-          );
+          // console.log(
+          //   "%cPathbuilder2e Import | %c arrayEquipment[ref]: " + arrayEquipment[ref],
+          //   pbcolor1,
+          //   pbcolor4
+          // );
         if (arrayEquipment.hasOwnProperty(ref)) {
           var itemName = arrayEquipment[ref][0];
           // console.log(itemName)
@@ -1982,7 +1999,6 @@ function mapSpecialToFoundryName(itemName) {
     { name: "Construct Carver", newname: "Tupilaq Carver" },
     { name: "Deadly Hair", newname: "Syu Tak-nwa's Deadly Hair" },
     { name: "Revivification Protocall", newname: "Revivification Protocol" },
-    { name: "", newname: "" },
     { name: "", newname: "" },
     { name: "", newname: "" },
     { name: "", newname: "" },
