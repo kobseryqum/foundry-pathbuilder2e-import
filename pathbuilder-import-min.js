@@ -92,6 +92,8 @@ export async function beginPathbuilderImport(targetActor, isHV = false) {
         <p>Step 3: Enter the 6 digit user ID number from the pathbuilder export dialog below</p>
         <br>
         <p>Please note - items which cannot be matched to the Foundry database will not be imported!</p>
+        <br />
+        <p>Some feats and Actions may be dupicated, you may have to remove the duplicates"</p>
         <p><strong>All inventory items will be removed upon import.</strong> The option to turn this off will return in the future. If you need to keep items, I recommend creating a new PC, importing via Pathbuilder to the new PC, then dragging inventory items from old PC to new PC.</p>
       <div>
       <hr/>
