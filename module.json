@@ -19,7 +19,7 @@
   "license": "MIT",
   "url": "https://github.com/kobseryqum/foundry-pathbuilder2e-import",
   "manifest": "https://raw.githubusercontent.com/kobseryqum/foundry-pathbuilder2e-import/master/module.json",
-  "download": "https://github.com/kobseryqum/foundry-pathbuilder2e-import/releases/download/foundry-pathbuilder2e-import-0.10.0/foundry-pathbuilder2e-import-0.10.0.zip",
+  "download": "https://github.com/kobseryqum/foundry-pathbuilder2e-import/releases/download/foundry-pathbuilder2e-import-0.10.0/pathbuilder2e-import-0.10.0.zip",
   "changelog": "https://github.com/kobseryqum/foundry-pathbuilder2e-import/blob/master/CHANGELOG.md",
   "bugs": "https://github.com/kobseryqum/foundry-pathbuilder2e-import/issues",
   "flags": {
