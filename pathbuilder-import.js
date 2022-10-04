@@ -698,6 +698,11 @@ if (targetActor.heritage != jsonBuild.heritage) {
     "Improved Evasion",
     "Weapon Mastery",
     "Incredible Senses",
+    "Gymnast Style",
+    "Battledancer Style",
+    "Braggart Style",
+    "Fencer Style",
+    "Wit Style",
   ];
   
   for (const cf in classFeatures) {
