@@ -5,7 +5,7 @@
   "authors": [
     {"name" : "slate"}, {"name" : "kobseryqum"}
     ],
-  "version": "0.10.0",
+  "version": "0.10.1",
   "compatibility": {
     "minimum": "10.286",
     "verified": "10.286",
