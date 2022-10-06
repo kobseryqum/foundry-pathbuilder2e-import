@@ -355,7 +355,92 @@ async function importCharacter(targetActor, jsonBuild) {
   // fix for Swashbuckler
   if (jsonBuild.class == "Swashbuckler"){
     arraySpecials.push("Swashbuckler's Style")
+    }
+  // Rogue
+  if (jsonBuild.class == "Rogue"){
+    arraySpecials.push("Rogue's Racket")
     } 
+  // Alchemist 
+  if (jsonBuild.class == "Alchemist"){
+    arraySpecials.push("Research Field")
+    } 
+  // Barbarian
+  if (jsonBuild.class == "Barbarian"){
+    arraySpecials.push("Instinct")
+    } 
+   // Bard
+  if (jsonBuild.class == "Bard"){
+    arraySpecials.push("Muses")
+  } 
+  
+  // Champion
+  if (jsonBuild.class == "Champion"){
+    arraySpecials.push("Deity and Cause")
+    } 
+  // Cleric
+  if (jsonBuild.class == "Cleric"){
+    arraySpecials.push("Doctrine")
+    }  
+  // druid
+  if (jsonBuild.class == "Druid"){
+    arraySpecials.push("Druidic Order")
+    }  
+  // gunslinger
+  if (jsonBuild.class == "Gunslinger"){
+    arraySpecials.push("Gunslinger's Way")
+    } 
+  // inventor
+  if (jsonBuild.class == "Inventor"){
+    arraySpecials.push("Innovation")
+    } 
+  
+  // investigator
+  if (jsonBuild.class == "Investigator"){
+    arraySpecials.push("Methodology")
+    } 
+  
+  //Magus
+  if (jsonBuild.class == "Magus"){
+    arraySpecials.push("Hybrid Study")
+    } 
+  
+  // psychic
+  if (jsonBuild.class == "Psychic"){
+    arraySpecials.push("Conscious Mind")
+    arraySpecials.push("Subconscious Mind")
+    } 
+  
+  
+  //ranger
+  if (jsonBuild.class == "Ranger"){
+    arraySpecials.push("Hunter's Edge")
+    } 
+  
+  // Sorcerer
+  if (jsonBuild.class == "Sorcerer"){
+    arraySpecials.push("Bloodline")
+    } 
+  
+  // Summoner
+  if (jsonBuild.class == "Summoner"){
+    arraySpecials.push("Eidolon")
+    } 
+  
+  // Witch
+  if (jsonBuild.class == "Witch"){
+    arraySpecials.push("Patron")
+    } 
+  
+  //Wizard
+  if (jsonBuild.class == "Wizard"){
+    arraySpecials.push("Arcane School")
+    arraySpecials.push( "Arcane Thesis")
+    } 
+  
+ 
+
+
+
 
   for (var ref in arraySpecials) {
     if (fbpiDebug)
