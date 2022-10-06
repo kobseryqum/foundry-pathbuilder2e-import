@@ -1,3 +1,13 @@
+## 0.10.1 (Oct 3, 2022)
+
+* updated to V10 data structures
+* changed the way heritage is applied
+* added checks for Thaum implements
+* added checks for orcale mystery
+* added checks for swashbucker sytle
+* added note for dup feats and actions
+* *** to do, check other classes for "sub class"
+
 ## 0.9.1 (Mar 7, 2022)
 
 * fix error message
